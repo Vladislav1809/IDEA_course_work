@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 # These test vectors are from the Project NESSIE http://goo.gl/xSpWfg
 
