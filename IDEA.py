@@ -11,7 +11,6 @@ class IDEA:
         assert 0 <= key < modulus
 
         sub_keys = []
-
         for i in range(9 * 6):
             sub_keys.append((key >> (112 - 16 * (i % 8))) % 0x10000)
             if i % 8 == 7:
@@ -40,9 +39,11 @@ class IDEA:
 
             x2, x3 = x3, x2
 
-            y1, y2, y3, y4 = _keys_addition_layer(x1, x2, x3, x4, self._keys[8])
+        """
+        Слова x2, x3 в 9ом раунде не переставляются. (раунд без MA) 
+        Соответсвенно нужно поменять их местами
+        """
+        y1, y2, y3, y4 = _keys_addition_layer(x1, x3, x2, x4, self._keys[8])
 
-            cipher_text = hex((y1 << 48) | (y2 << 32) | (y3 << 16) | y4)
-            return cipher_text
-
-
+        cipher_text = (y1 << 48) | (y2 << 32) | (y3 << 16) | y4
+        return cipher_text
