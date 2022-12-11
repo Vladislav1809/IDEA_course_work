@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+from time import sleep
 
 from IDEA import IDEA
+from tests.tests import tests
 
 
 def main():
@@ -26,3 +28,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    tests()
+    sleep(120)
+
