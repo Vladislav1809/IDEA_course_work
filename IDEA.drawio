@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-12-11T19:43:39.457Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="Jh3WfaHERJs968JRsJSk" version="20.6.2" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-12-12T20:29:59.338Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="rygvuxI9ALo5tGqimtdz" version="20.6.2" type="github" pages="2">
   <diagram id="LyVyp1-_pyKCsooUgjD9" name="IDEA">
-    <mxGraphModel dx="1363" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1898" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -138,7 +138,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="eFOuZqR815M8VUAl1kxP" name="multiply addition">
-    <mxGraphModel dx="2044" dy="872" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2057" dy="727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -166,7 +166,7 @@
           <mxGeometry x="210" y="210" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="e6EaWSNGrf1nya2IBDhs-6" value="MA&lt;br&gt;(multiply addition)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="240" y="120" width="60" height="30" as="geometry" />
+          <mxGeometry x="240" y="150" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="e6EaWSNGrf1nya2IBDhs-8" value="K5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry y="640" width="60" height="30" as="geometry" />
@@ -195,7 +195,7 @@
         <mxCell id="e6EaWSNGrf1nya2IBDhs-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e6EaWSNGrf1nya2IBDhs-14" target="e6EaWSNGrf1nya2IBDhs-22">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e6EaWSNGrf1nya2IBDhs-14" value="P1 XOR P4&lt;br&gt;=&lt;br&gt;q" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="e6EaWSNGrf1nya2IBDhs-14" value="P2 XOR P4&lt;br&gt;=&lt;br&gt;q" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="290" y="414" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="e6EaWSNGrf1nya2IBDhs-15" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e6EaWSNGrf1nya2IBDhs-5" target="e6EaWSNGrf1nya2IBDhs-12">
@@ -316,7 +316,7 @@
           <mxGeometry x="140" y="1370" width="90" height="90" as="geometry" />
         </mxCell>
         <mxCell id="e6EaWSNGrf1nya2IBDhs-40" value="END MA" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="1540" width="120" height="60" as="geometry" />
+          <mxGeometry x="240" y="1490" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
