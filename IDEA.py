@@ -11,14 +11,13 @@ class IDEA:
         assert 0 <= key < modulus
 
         sub_keys = []
-        for i in range(9 * 6):
-            sub_keys.append((key >> (112 - 16 * (i % 8))) % 0x10000)
-            if i % 8 == 7:
-                key = ((key << 25) | (key >> 103)) % modulus
-
+        for i in range(8 * 6 + 4):  # количество подключей (6 ключей в 8 раундах и 4 ключа в финальном)
+            sub_keys.append((key >> (112 - 16 * (i % 8))) % 0x10000)  # нарезаем подключи по 16 бит
+            if i % 8 == 7:  # последняя итерация каждого разбиения
+                key = ((key << 25) | (key >> 103)) % modulus  # двигаем блок на 25 позиций влево
         keys = []
         for i in range(9):
-            round_keys = sub_keys[6 * i: 6 * (i + 1)]
+            round_keys = sub_keys[6 * i: 6 * (i + 1)]  # последний срез вернёт 4 ключа
             keys.append(tuple(round_keys))
         self._keys = tuple(keys)
 
