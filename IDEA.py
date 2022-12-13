@@ -21,7 +21,7 @@ class IDEA:
             keys.append(tuple(round_keys))
         self._keys = tuple(keys)
 
-    def encrypt(self, plaintext):
+    def encrypt(self, plaintext: int) -> int:
         assert 0 <= plaintext < (1 << 64), 'длина вводимого текста ' \
                                            'больше допустимого значения'
 
