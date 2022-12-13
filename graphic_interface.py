@@ -78,9 +78,12 @@ window.title("IDEA")
 window.rowconfigure(0, minsize=800, weight=1)
 window.columnconfigure(1, minsize=800, weight=1)
 
+
 txt_edit = tk.Text(window)
+
+
 fr_buttons = tk.Frame(window, relief=tk.RAISED, bd=3)
-btn_open = tk.Button(fr_buttons, text="Открыть", command=open_file)
+btn_open = tk.Button(fr_buttons, text="Получить текст из файла", command=open_file)
 btn_encrypt = tk.Button(fr_buttons, text="Зашифровать вводимый текст", command=encrypt_text)
 btn_save = tk.Button(fr_buttons, text="Сохранить как...", command=save_file)
 btn_tests = tk.Button(fr_buttons, text="Запустить тесты", command=test_idea)
@@ -92,5 +95,15 @@ btn_tests.grid(row=3, column=0, sticky="ew", padx=5)
 
 fr_buttons.grid(row=0, column=0, sticky="ns")
 txt_edit.grid(row=0, column=1, sticky="nsew")
+txt_edit.tag_config('start_colour', foreground="blue")
+txt_edit.insert(tk.END, "Вы находитесь в графическом редакторе для работы с алгоритмом шифрования IDEA \n"
+                        "Вы можете:  \n"
+                        "1) Получить текст из произвольного текстового файла \n"
+                        "2) Ввести произвольный текст самостоятельно \n"
+                        "3) Закодировать текст с использованием алгоритма IDEA \n"
+                        "4) Сохранить зашифрованный результат \n"
+                        "5) Запустить встроенный тест алгоритма \n",
+                'start_colour'
+                )
 
 window.mainloop()
