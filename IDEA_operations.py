@@ -1,16 +1,19 @@
 """
-фундаментальные операции в IDEA
+В данном файле реализованы фундаментальные операции в IDEA
 1) сложение по модулю 2**16 (16**4)
-2) умножение по модулю 2**16 + 1 (16 ** 4 + 1)
-3) XOR | побитовое исключающее или
+2) keys_addition_layer
+3) multiply_addition_layer
 
-никакие 2 из этих операций:
- - не удовлетворяют дистрибутивному закону
- - не удовлетворяют ассоциативному закону
 """
 
 
 def _multiply(x: int, y: int) -> int:
+    """
+
+    :param x: int
+    :param y: int
+    :return: int
+    """
     assert 0 <= x <= 0xFFFF, 'x не попал в интервал от 0 до 16**4 - 1'  # 16**4 - 1
     assert 0 <= y <= 0xFFFF, 'y не попал в интервал от 0 до 16**4 - 1'
 
@@ -30,6 +33,15 @@ def _multiply(x: int, y: int) -> int:
 
 
 def _keys_addition_layer(p1: int, p2: int, p3: int, p4: int, round_keys: list) -> tuple:
+    """
+
+    :param p1: int
+    :param p2: int
+    :param p3: int
+    :param p4: int
+    :param round_keys: list
+    :return: tuple
+    """
     assert 0 <= p1 <= 0xFFFF
     assert 0 <= p2 <= 0xFFFF
     assert 0 <= p3 <= 0xFFFF
@@ -49,6 +61,15 @@ def _keys_addition_layer(p1: int, p2: int, p3: int, p4: int, round_keys: list) -
 
 
 def _multiply_addition_layer(y1: int, y2: int, y3: int, y4: int, round_keys: list) -> tuple:
+    """
+
+    :param y1: int
+    :param y2: int
+    :param y3: int
+    :param y4: int
+    :param round_keys: list
+    :return: tuple
+    """
     assert 0 <= y1 <= 0xFFFF
     assert 0 <= y2 <= 0xFFFF
     assert 0 <= y3 <= 0xFFFF

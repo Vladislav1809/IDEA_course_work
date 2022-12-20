@@ -1,12 +1,24 @@
 from IDEA_operations import _keys_addition_layer, _multiply_addition_layer
 
+"""
+Данный файл является классовым представлением алгоритма шифрования IDEA
+"""
+
 
 class IDEA:
-    def __init__(self, key: int):
+    def __init__(self, key: int) -> None:
+        """
+
+        :param key: int
+        """
         self._keys: tuple | None = None
         self.change_key(key)
 
-    def change_key(self, key: int):
+    def change_key(self, key: int) -> None:
+        """
+
+        :param key: int
+        """
         modulus = 1 << 128  # 2 ** 128
         assert 0 <= key < modulus
 
@@ -46,3 +58,9 @@ class IDEA:
 
         cipher_text = (y1 << 48) | (y2 << 32) | (y3 << 16) | y4
         return cipher_text
+
+    @staticmethod
+    def generate_private_key() -> int:
+        from secrets import token_hex
+
+        return int(token_hex(32), 16) >> 128
