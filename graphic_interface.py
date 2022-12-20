@@ -4,8 +4,10 @@ from tkinter.filedialog import askopenfilename, asksaveasfilename
 from IDEA import IDEA
 from tests.tests import TEST_VECTORS
 
+SECRET_KEY_TEXT = 'Секретный ключ = '
 
-def open_file():
+
+def open_file() -> None:
     """Открытие файла для редактирования"""
     filepath = askopenfilename(
         filetypes=[("Текстовые файлы", "*.txt"), ("Все файлы", "*.*")]
@@ -19,14 +21,24 @@ def open_file():
     window.title(f"idea - {filepath}")
 
 
-def encrypt_text():
+def encrypt_text() -> None:
     input_text: str = txt_edit.get("1.0", tk.END)
+
+    key_position = input_text.find(SECRET_KEY_TEXT)
+
+    if key_position != -1:
+        key_position += len(SECRET_KEY_TEXT)
+        key_string = input_text[key_position:]
+        tab_position = key_string.find("\t") + 1
+        assert tab_position != -1
+        key = int(key_string[:tab_position])
+    else:
+        key = 0x2BD6459F82C5B300952C49104881FF48
+    input_text = input_text.replace(f'{SECRET_KEY_TEXT}{key}\t', '')
     hex_text: str = input_text.encode('utf-8').hex()
     hex_number: int = int(hex_text, 16)
     bit_length: int = hex_number.bit_length()
 
-    # todo:: auto-generate key func
-    key = 0x2BD6459F82C5B300952C49104881FF48
     idea = IDEA(key)
     encrypted_text: str = ''
     if bit_length < 64:
@@ -46,7 +58,7 @@ def encrypt_text():
     txt_edit.insert(tk.END, encrypted_text)  # выводим число в виде строки 0x формата
 
 
-def save_file():
+def save_file() -> None:
     """Сохранение текущий файл как новый файл."""
     filepath = asksaveasfilename(
         defaultextension="txt",
@@ -60,7 +72,7 @@ def save_file():
     window.title(f"idea - {filepath}")
 
 
-def test_idea():
+def test_idea() -> None:
     txt_edit.delete("1.0", tk.END)
     idea_cipher = IDEA(0)
     for test in TEST_VECTORS:
@@ -73,26 +85,30 @@ def test_idea():
     print("Тестирование Пройдено")
 
 
+def generate_key() -> None:
+    secret_key = IDEA.generate_private_key()
+    output_text = f'\n{SECRET_KEY_TEXT}{secret_key}\t'
+    txt_edit.insert(tk.END, output_text)
+
+
 window = tk.Tk()
 window.title("IDEA")
 window.rowconfigure(0, minsize=800, weight=1)
 window.columnconfigure(1, minsize=800, weight=1)
 
-
 txt_edit = tk.Text(window)
-
 
 fr_buttons = tk.Frame(window, relief=tk.RAISED, bd=3)
 btn_open = tk.Button(fr_buttons, text="Получить текст из файла", command=open_file)
 btn_encrypt = tk.Button(fr_buttons, text="Зашифровать вводимый текст", command=encrypt_text)
 btn_save = tk.Button(fr_buttons, text="Сохранить как...", command=save_file)
 btn_tests = tk.Button(fr_buttons, text="Запустить тесты", command=test_idea)
-
+btn_generate_secret_key = tk.Button(fr_buttons, text="Сгенерировать случайный ключ", command=generate_key)
 btn_open.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
 btn_encrypt.grid(row=1, column=0, sticky="ew", padx=5, pady=5)
-btn_save.grid(row=2, column=0, sticky="ew", padx=5, pady=5)
-btn_tests.grid(row=3, column=0, sticky="ew", padx=5)
-
+btn_generate_secret_key.grid(row=2, column=0, sticky="ew", padx=5, pady=5)
+btn_save.grid(row=3, column=0, sticky="ew", padx=5, pady=5)
+btn_tests.grid(row=4, column=0, sticky="ew", padx=5)
 fr_buttons.grid(row=0, column=0, sticky="ns")
 txt_edit.grid(row=0, column=1, sticky="nsew")
 txt_edit.tag_config('start_colour', foreground="blue")
